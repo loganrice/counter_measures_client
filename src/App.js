@@ -5,6 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import AppBar from 'material-ui/AppBar';
 import {teal500} from 'material-ui/styles/colors';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import SignIn from './components/SignIn';
 
 const muiTheme = getMuiTheme({
   palette: {
@@ -24,6 +25,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Welcome to React</h1>
         </header>
+        <SignIn />
         <p className="App-intro">
           <RaisedButton label="default" />
           To get started, edit <code>src/App.js</code> and save to reload.
