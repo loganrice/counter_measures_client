@@ -1,36 +1,20 @@
 import React, { Component } from 'react';
-import 'whatwg-fetch';
-import url from '../constants/urls.js';
 
-class SignIn extends Component {
-  logIn() {
-    var data;
-    fetch(url.authentication, {
-      method: 'post',
-      body: JSON.stringify({ 
-        user: {email: "loganrice72@gmail.com", password: "password"}
-      }),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    .then((response) => {
-      return response.json()
-      console.log(response.json())
-    }).then((d) => {
-      console.log(d);
-    })
-  }
+import SubmitButton from './signin/SubmitButton.js';
+import EmailInput from './signin/EmailInput.js';
+import PasswordInput from './signin/PasswordInput.js';
 
-  render() {
-    return (
+const SignIn = () => {
+  return (
+    <div>
       <form>
-        <input type="email" name="email" placeholder="Email address"/>
-        <input type="password" name="password" placeholder="Password"/>
-        <button type="button" onClick={this.logIn}>Log in</button>
+        <EmailInput /> 
+        <PasswordInput />
+        <SubmitButton  />
       </form>
-    );
-  }
+    </div>
+  );
 }
 
 export default SignIn;
+
