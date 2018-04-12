@@ -8,12 +8,8 @@ export default class SubmitButton extends Component {
     var data;
     fetch(url.authentication, {
       method: 'post',
-      body: JSON.stringify({ 
-        user: {email: "loganrice72@gmail.com", password: "password"}
-      }),
-      headers: {
-        "Content-Type": "application/json"
-      }
+      body: '{ "user": {"email": "loganrice72@gmail.com", "password": "password"}}',
+      headers: { 'Content-Type': 'application/json'}
     })
     .then((response) => {
       return response.json()
