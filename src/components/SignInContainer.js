@@ -12,19 +12,35 @@ class SignInContainer extends Component {
   }
 
   render () {
+    let styles = { 
+      height: '100vh',
+      alignItems: 'center',
+      textAlign: 'center'
+    };
+
     store.dispatch(signIn("user!!", "Password!!"))
     return (
-      <div className="content-grid mdl-grid">
-        <div class="mdl-layout-spacer"></div>
-        <div className="mdl-cell mdl-cell--3-col-col-phone">
-          <h2 onClick={this.st}>Make Collaborative Problem Solving Easier</h2>
-          <form>
-            <EmailInput /> 
-            <PasswordInput />
-            <SubmitButton  />
-          </form>
+      <div className="content-grid mdl-grid" style={styles}>
+        <div className="mdl-layout-spacer"></div>
+
+        <div class=" mdl-card mdl-shadow--2dp">
+          <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Login</h2>
+          </div>
+          <div onClick={this.st} class="mdl-card__supporting-text">
+            Make Collaborative Problem Solving Easier
+          </div>
+          <div class="mdl-card__actions mdl-card--border">
+            <form>
+              <EmailInput /> 
+              <PasswordInput />
+              <SubmitButton  />
+            </form>
+
+          </div>
         </div>
-        <div class="mdl-layout-spacer"></div>
+      
+        <div className="mdl-layout-spacer"></div>
       </div>
     );
   }
