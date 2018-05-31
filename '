@@ -12,11 +12,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 class ConnectedSubmitButton extends Component {
-  constructor() {
-    super();
-    this.logIn = this.logIn.bind(this);
-  }
-
   logIn() {
     var data;
     fetch(url.authentication, {
@@ -27,8 +22,9 @@ class ConnectedSubmitButton extends Component {
     .then((response) => {
       return response.json()
       console.log(response.json())
-    }).then((d) => {
+      console.log("dispatch")
       this.props.signIn("email", "password")
+    }).then((d) => {
       console.log("dispatch")
       console.log(d);
     })
