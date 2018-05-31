@@ -2,8 +2,8 @@ import  { SIGNIN }  from '../actions/user-actions';
 
 const initialState = {
   user: {
-    email: '',
-    password: '',
+    email: 'initialEmail',
+    password: 'initialPassword',
   }
 }
 
