@@ -7,7 +7,7 @@ import { signIn } from '../../actions/user-actions';
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signIn: (email, password) => dispatch(signIn(email, password))
+    signIn: (email, password, token) => dispatch(signIn(email, password, token))
   }
 };
 
@@ -28,7 +28,7 @@ class ConnectedSubmitButton extends Component {
       return response.json()
       console.log(response.json())
     }).then((d) => {
-      this.props.signIn("email", "password")
+      this.props.signIn("email", "password", d.auth_token)
       console.log("dispatch")
       console.log(d);
     })

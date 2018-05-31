@@ -1,11 +1,10 @@
 import  { SIGNIN }  from '../actions/user-actions';
 
 const initialState = {
-  user: {
-    email: 'initialEmail',
-    password: 'initialPassword',
-  }
-}
+    email: '',
+    password: '',
+    token: ''
+};
 
 export default function(state=initialState, action) {
   switch (action.type) {
