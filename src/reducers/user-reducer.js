@@ -1,4 +1,4 @@
-import  { SIGNIN }  from '../actions/user-actions';
+import { SIGNIN, UPDATEEMAIL, UPDATEPASSWORD} from  '../constants/actions';
 
 const initialState = {
     email: '',
@@ -9,8 +9,15 @@ const initialState = {
 export default function(state=initialState, action) {
   switch (action.type) {
     case SIGNIN: {
-      return Object.assign({}, state, action.payload)
+      return Object.assign(initialState, state, action.payload)
     }
+    case (UPDATEEMAIL): {
+      return Object.assign(initialState, state, action.payload)
+    }
+    case (UPDATEPASSWORD): {
+      return Object.assign(initialState, state, action.payload)
+    }
+
     default:
       return state;
   }

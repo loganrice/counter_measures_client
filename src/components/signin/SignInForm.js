@@ -6,7 +6,7 @@ import PasswordInput from './PasswordInput.js';
 import logo from '../../logo.png';
 
 
-const SignInForm = ({email, password, logIn}) => {
+const SignInForm = ({email, password, logIn, handleEmailChange, handlePasswordChange}) => {
   let containerStyle = { 
     height: '100vh',
     alignItems: 'center',
@@ -31,8 +31,8 @@ const SignInForm = ({email, password, logIn}) => {
         <div className="mdl-card__actions mdl-card--border">
           <form>
     
-            <EmailInput email={email} /> 
-            <PasswordInput password={password}/>
+            <EmailInput email={email} handleEmailChange={handleEmailChange}/> 
+            <PasswordInput password={password} handlePasswordChange={handlePasswordChange}/>
             <SubmitButton  logIn={logIn}/>
           </form>
         </div>

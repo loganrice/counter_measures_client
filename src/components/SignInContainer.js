@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import 'whatwg-fetch';
 
 import { connect } from 'react-redux';
-import { signIn }  from '../actions/user-actions';
+import { signIn, updateUserEmail, updateUserPassword }  from '../actions/user-actions';
 import SignInForm from './signin/SignInForm';
 import url from '../constants/urls.js';
 
@@ -16,58 +16,54 @@ class SignInContainer extends Component {
   }
 
   handleEmailChange(event) {
-    console.log("email change");
     let email = event.target.value;
-    this.setState({email: email})
-    // store.dispatch(signIn(email, this.state.password))
+    this.props.updateUserEmail(email)
   }
 
   handlePasswordChange(event) {
     let password = event.target.value;
-    this.setState({password: password})
-    // store.dispatch(signIn(this.state.email, password))
+    this.props.updateUserPassword(password)
   }
 
   logIn() {
     var data;
+    let email = this.props.user.email;
+    let password = this.props.user.password; 
     fetch(url.authentication, {
       method: 'post',
-      body: '{ "user": {"email": "loganrice72@gmail.com", "password": "password"}}',
+      body: '{ "user": {"email": email, "password": password}}',
       headers: { 'Content-Type': 'application/json'}
     })
     .then((response) => {
       return response.json()
-      console.log(response.json())
     }).then((d) => {
-      this.props.signIn("email", "password", d.auth_token)
-      console.log("dispatch")
-      console.log(d);
+      this.props.signIn(email, password, d.auth_token)
     })
   }
 
 
   render () {
-    // store.dispatch(signIn("user!!", "Password!!"))
     return (
       <SignInForm 
         email={this.props.email} 
         password={this.props.password} 
         logIn={this.logIn} 
+        handleEmailChange={this.handleEmailChange}
+        handlePasswordChange={this.handlePasswordChange}
       />
     );
   }
 }
 
 function mapStateToProps(state, ownProps) {
-  return {
-    email: 'email',
-    password: 'password'
-  }
+  return Object.assign({}, state, ownProps);
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signIn: (email, password, token) => dispatch(signIn(email, password, token))
+    signIn: (email, password, token) => dispatch(signIn(email, password, token)),
+    updateUserEmail: (email) => dispatch(updateUserEmail(email)),
+    updateUserPassword: (email) => dispatch(updateUserPassword(email))
   }
 };
 
