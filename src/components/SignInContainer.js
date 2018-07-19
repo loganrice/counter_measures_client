@@ -29,9 +29,10 @@ class SignInContainer extends Component {
     var data;
     let email = this.props.user.email;
     let password = this.props.user.password; 
+ 
     fetch(url.authentication, {
       method: 'post',
-      body: '{ "user": {"email": email, "password": password}}',
+      body: '{ "user": {"email": "' + email + '", "password": "' + password + '"}}',
       headers: { 'Content-Type': 'application/json'}
     })
     .then((response) => {
