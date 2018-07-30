@@ -4,6 +4,7 @@ import SubmitButton from './SubmitButton.js';
 import EmailInput from './EmailInput.js';
 import PasswordInput from './PasswordInput.js';
 import logo from '../../logo.png';
+import { Link } from 'react-router-dom';
 
 
 const SignInForm = ({email, password, logIn, handleEmailChange, handlePasswordChange}) => {
@@ -21,6 +22,7 @@ const SignInForm = ({email, password, logIn, handleEmailChange, handlePasswordCh
 
   return (  
     <div className="content-grid mdl-grid" style={containerStyle}>
+      <Link to="/">Main</Link>
       <div className="mdl-layout-spacer"></div>
       <div className=" mdl-card mdl-shadow--2dp">
         <img src={logo} className="App-logo" style={logoStyle} alt="logo" />
